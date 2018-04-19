@@ -22,6 +22,7 @@ public class Book {
             System.out.println("Select option using either the corresponding number.");
             System.out.print("Selection: ");
             response = keyboard.nextLine();
+            System.out.println();
 
             switch (Integer.parseInt(response)) {
                 case 1:
@@ -32,9 +33,15 @@ public class Book {
                     number = keyboard.nextLine();
 
                     PhoneBook.insert(new Person(name, number));
-                    System.out.println("Successfully added.");
+                    System.out.println("Successfully added.\n");
                     break;
                 case 2:
+                    System.out.println("You have selected to delete someone from your phone book.");
+                    System.out.print("Please enter the name: ");
+                    name = keyboard.nextLine();
+                    System.out.println("Please enter the number: ");
+                    number = keyboard.nextLine();
+                    //if (PhoneBook.searchFor(a));
                     break;
                 case 3:
                     break;
@@ -45,7 +52,14 @@ public class Book {
                     break;
             }
 
-            continueForBook = false;
+            System.out.print("Do you wish to perform another action (yes or no)? ");
+            response = keyboard.nextLine().toLowerCase();
+
+            if (response == "no")
+                continueForBook = false;
+            else
+                continueForBook = true;
+            System.out.println();
         }
     }
 }
