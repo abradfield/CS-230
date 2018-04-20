@@ -59,6 +59,7 @@ public class Book {
                 continueForBook = false;
             else
                 continueForBook = true;
+
             System.out.println();
         }
     }
