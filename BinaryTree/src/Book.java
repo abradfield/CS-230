@@ -9,8 +9,7 @@ public class Book {
         boolean continueForBook = true;
 
         System.out.println("Welcome to your address book.");
-        System.out.println("-----------------------------");
-        System.out.println("\n");
+        System.out.println("-----------------------------\n\n");
 
         while (continueForBook) {
             System.out.println("MAIN MENU: ");
@@ -33,7 +32,7 @@ public class Book {
                     number = keyboard.nextLine();
 
                     PhoneBook.insert(new Person(name, number));
-                    System.out.println("Successfully added.\n");
+                    System.out.println("Successfully added.\n\n");
                     break;
                 case 2:
                     System.out.println("You have selected to delete someone from your phone book.");
@@ -54,7 +53,7 @@ public class Book {
                     break;
                 default:
                     System.out.println("Invalid option.");
-                    System.out.println("Please use a valid option.");
+                    System.out.println("Please use a valid option.\n\n");
             }
         }
     }
