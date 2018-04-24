@@ -48,19 +48,14 @@ public class Book {
                 case 4:
                     break;
                 case 5:
+                    System.out.println("You have selected to exit your phone book.");
+                    System.out.println("Exiting.");
                     continueForBook = false;
                     break;
+                default:
+                    System.out.println("Invalid option.");
+                    System.out.println("Please use a valid option.");
             }
-
-            System.out.print("Do you wish to perform another action (yes or no)? ");
-            response = keyboard.nextLine().toLowerCase();
-
-            if (response == "no")
-                continueForBook = false;
-            else
-                continueForBook = true;
-
-            System.out.println();
         }
     }
 }
