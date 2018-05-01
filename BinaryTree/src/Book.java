@@ -2,11 +2,24 @@ import java.util.Scanner;
 import java.io.*;
 
 public class Book {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner keyboard = new Scanner(System.in);
-        String name, number, response;
+        FileReader file = new FileReader("phonebook.txt");
+        Scanner fileIn = new Scanner(file);
+        String name, number, response, nextLine;
         BinarySearchTree<Person> PhoneBook = new BinarySearchTree<>();
+        FileWriter toFile;
+        Person temp;
         boolean continueForBook = true;
+
+        while (fileIn.hasNext()) {
+            nextLine = fileIn.nextLine();
+
+            name = nextLine.substring(nextLine.lastIndexOf(" "));
+            number = nextLine.substring(nextLine.lastIndexOf( ""), nextLine.length());
+
+            PhoneBook.insert(new Person(name, number));
+        }
 
         System.out.println("Welcome to your address book.");
         System.out.println("-----------------------------\n\n");
@@ -38,13 +51,28 @@ public class Book {
                     System.out.println("You have selected to delete someone from your phone book.");
                     System.out.print("Please enter the name: ");
                     name = keyboard.nextLine();
-                    System.out.println("Please enter the number: ");
+                    System.out.print("Please enter the number: ");
                     number = keyboard.nextLine();
-                    //if (PhoneBook.searchFor(a));
+
+                    temp = new Person(name, number);
+
+                    if (PhoneBook.searchFor(temp)) {
+                        System.out.println("Deleting " + temp.returnName());
+                        PhoneBook.delete(temp);
+                        System.out.println("Deletion successful.");
+                    }
+                    else {
+                        System.out.println("The person searched for is not in the tree.");
+                    }
+
                     break;
                 case 3:
                     break;
                 case 4:
+                    System.out.println("You have selected to write the phone book to a file.");
+                    System.out.print("Writing to file...");
+                    writeToFile(PhoneBook);
+
                     break;
                 case 5:
                     System.out.println("You have selected to exit your phone book.");
@@ -56,5 +84,12 @@ public class Book {
                     System.out.println("Please use a valid option.\n\n");
             }
         }
+    }
+
+    public static void writeToFile(BinarySearchTree bookToPrint) throws IOException{
+        boolean completed = false;
+        FileWriter toFile = new FileWriter("newphonebook.txt");
+
+        System.out.println("Printing to file..");
     }
 }
